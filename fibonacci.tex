@@ -1,35 +1,45 @@
 \section{Algorytm macierzowy wyznaczania liczb Fibonacciego}
 
-\comment{Algorytm szybkiego potęgowania będzie opisany w tym skrypcie, więc jak już będzie to będziemy chciali się odwołać do odpowiedniego rozdziału a nie do wikipedii.}
-W tym rozdziale opiszemy algorytm obliczania liczb Fibonacciego, który wykorzystuje szybkie potęgowanie\footnote{\url{https://en.wikipedia.org/wiki/Exponentiation_by_squaring}}.
-Algorytm działa w czasie $O(\log{n})$, co sprawia, że jest znacznie atrakcyjniejszy (gdy pytamy tylko o jedną liczbę) od algorytmu dynamicznego, który wymaga czasu $O(n)$.
+W tym rozdziale opiszemy algorytm obliczania liczb Fibonacciego, który wykorzystuje szybkie potęgowanie.
+Algorytm działa w czasie $\Theta(\log{n})$, co sprawia, że jest znacznie atrakcyjniejszy (gdy pytamy tylko o jedną liczbę) od algorytmu dynamicznego, który wymaga czasu $\Theta(n)$.
+Zacznijmy od zdefiniowania ciągu Fibonacciego:
+\begin{equation*}
+  F_n=\begin{cases}
+    n, & \text{jeśli $n \leq1$}\\
+    0, & \text{wpp.}
+  \end{cases}
+\end{equation*}
 
-Znajdźmy taką macierz $M$, która po wymnożeniu przez transponowany wektor wyrazów $F_{n}$ i $F_{n - 1}$ da nam wektor, w którym otrzymamy wyrazy $F_{n + 1}$ oraz $F_{n}$. 
+Teraz, znajdźmy taką macierz $M$, która po wymnożeniu przez transponowany wektor wyrazów $F_{n}$ i $F_{n - 1}$ da nam wektor, w którym otrzymamy wyrazy $F_{n + 1}$ oraz $F_{n}$. 
 Łatwo sprawdzić, że dla ciągu Fibonacciego taka macierz ma postać:
 \begin{equation*}
   M = \begin{bmatrix}1 & 1 \\ 1 & 0\end{bmatrix}
 \end{equation*}
-Bo:
+bo:
 \begin{equation}
   \label{eq:fibonacci-m}
-  M \times
+  M
+  \times
   \begin{bmatrix}F_n \\ F_{n - 1}\end{bmatrix}
-  = \begin{bmatrix}F_{n + 1} \\ F_{n}\end{bmatrix}
+  =
+  \begin{bmatrix}1 & 1 \\ 1 & 0\end{bmatrix}
+  \times
+  \begin{bmatrix}F_n \\ F_{n - 1}\end{bmatrix}
+  =
+  \begin{bmatrix}F_n + F_{n - 1} \\ F_{n}\end{bmatrix}
+  =
+  \begin{bmatrix}F_{n + 1} \\ F_{n}\end{bmatrix}
 \end{equation}
 Wynika to wprost z definicji mnożenia macierzy oraz definicji ciągu Fibonacciego.
 Wykonajmy mnożenie z równania \ref{eq:fibonacci-m} $n$ razy:
-\begin{equation}
-  \label{eq:mult-n-times}
-  \underbrace{M \times (M \times (M \times ...\,(M}_\text{n razy}
+\begin{equation*}
+  \underbrace{M \times \bigg(M \times \bigg(M \times ...\,\bigg(M}_\text{n razy}
   \times
-  \begin{bmatrix}F_n \\ F_{n - 1}\end{bmatrix})\,...\,))
-\end{equation}
-\begin{fact}{Mnożenie macierzy jest łączne.}
-  \label{fact:matrix-mult-is-associative}
-\end{fact}
-Z Faktu \ref{fact:matrix-mult-is-associative}. i wyrażenia \ref{eq:mult-n-times}. mamy:
+  \begin{bmatrix}F_1 \\ F_0\end{bmatrix}\bigg)\,...\,\bigg)\bigg)
+\end{equation*}
+Z faktu, że mnożenie macierzy jest łączne oraz powyższego wyrażenia otrzymujemy:
 \begin{align*}
-  M^n \times \begin{bmatrix}F_n \\ F_{n - 1}\end{bmatrix}
+  M^n \times \begin{bmatrix}F_1 \\ F_0\end{bmatrix}
 \end{align*}
 Pokażemy, że powyższa macierz ma zastosowanie w obliczaniu n-tej liczby Fibonacciego.
 \begin{lemma}
@@ -38,14 +48,20 @@ Pokażemy, że powyższa macierz ma zastosowanie w obliczaniu n-tej liczby Fibon
   \end{equation*}
 \end{lemma}
 
-\begin{proof}Przez indukcję.\\
-  Sprawdźmy dla $n = 1$. Mamy:
+\begin{proof}[Dowód przez indukcję]
+  Sprawdźmy dla $n = 0$. Mamy:
   \begin{equation*}
-    \begin{bmatrix}1 & 1 \\ 1 & 0\end{bmatrix}^1
+    \begin{bmatrix}1 & 1 \\ 1 & 0\end{bmatrix}^0
     \times
     \begin{bmatrix}1 \\ 0\end{bmatrix}
     =
-    \begin{bmatrix}1 \\ 1\end{bmatrix} = \begin{bmatrix}F_2 \\ F_1\end{bmatrix}
+    I
+    \times
+    \begin{bmatrix}1 \\ 0\end{bmatrix}
+    =
+    \begin{bmatrix}1 \\ 0\end{bmatrix}
+    =
+    \begin{bmatrix}F_1 \\ F_0\end{bmatrix}
   \end{equation*}
   Rozważmy $n + 1$ zakładając poprawność dla $n$.
   \begin{equation*}
@@ -67,7 +83,7 @@ Pokażemy, że powyższa macierz ma zastosowanie w obliczaniu n-tej liczby Fibon
     \end{bmatrix}^{n}
     \times
     \begin{bmatrix}1 \\ 0\end{bmatrix}
-    =
+    \stackrel{teza}{=}
     \begin{bmatrix}
       1 & 1 \\
       1 & 0
@@ -97,12 +113,12 @@ Pokażemy, że powyższa macierz ma zastosowanie w obliczaniu n-tej liczby Fibon
 
   \caption{Procedura \texttt{get\_fibonacci}}
 \end{algorithm}
-Mimo że powyższy algorytm działa w czasie $O(\log{n})$, warto mieć na uwadze fakt, że liczby Fibonacciego 
+Mimo że powyższy algorytm działa w czasie $\Theta(\log{n})$, warto mieć na uwadze fakt, że liczby Fibonacciego 
 rosną wykładniczo. W praktyce oznacza to pracę na liczbach przekraczających długość słowa maszynowego.
 
 Zaprezentowaną metodę można uogólnić na dowolne ciągi, które zdefiniowane są przez liniową 
-kombinację skończonej liczby poprzednich elementów. Wystarczy znaleźć odpowiednią macierz $M$; 
-dla ciągów postaci:
+kombinację skończonej liczby poprzednich elementów. Wystarczy znaleźć odpowiednią macierz $M$. 
+Dla ciągów postaci:
 \begin{equation*}
   G_{n + 1} = a_n G_n + a_{n - 1} G_{n - 1} + ... + a_{n - k} G_{n - k}
 \end{equation*}
@@ -111,12 +127,12 @@ wygląda ona następująco:
   M
   =
   \begin{bmatrix}
-    a_n    & a_{n - 1} & a_{n - 2} & \dots & a_{n - k + 1} & a_{n - k} \\
-    1      & 0         & 0         & \dots & 0             & 0 \\
-    0      & 1         & 0         & \dots & 0             & 0 \\
-    0      & 0         & \ddots \\
-    \vdots &           &           & \ddots \\
-    0      & 0         & 0         & \dots & 1             & 0
+    a_n    & a_{n - 1} & a_{n - 2} & \dots  & a_{n - k + 1} & a_{n - k} \\
+    1      & 0         & 0         & \dots  & 0             & 0 \\
+    0      & 1         & 0         & \dots  & 0             & 0 \\
+    0      & 0         & 1         & \dots  & 0             & 0 \\
+    \vdots & \vdots    & \vdots    & \ddots & \vdots        & \vdots \\
+    0      & 0         & 0         & \dots  & 1             & 0
   \end{bmatrix}
 \end{align*}
-Dowód tej konstrukcji pozostawiamy czytelnikowi jako ćwiczenie.
+Dowód tej konstrukcji pozostawiamy Czytelnikowi jako ćwiczenie.

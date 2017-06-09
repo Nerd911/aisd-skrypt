@@ -115,30 +115,38 @@
 }
 
 \begin{document}
-
+\pagenumbering{arabic}
 \pagestyle{empty}
+
 \titleGM
 \titlepagedecoration
 
-\tableofcontents
+\tableofcontents 
+\pagestyle{plain}
 
-\chapter{Podstawy}
+\chapter{Zrobione}
+
+\include{mastertheorem}
+
+\include{bitoniczne}
+
+\include{fibonacci}
+
+\include{strassen}
+
+\include{elementuniqness}
+
+\include{plecaki}
+
+\chapter{Under construction}
 
 \include{zlozonosc}
 
 \include{modelobliczen}
 
-\chapter{Struktury danych}
-
 \include{kopiec}
 
-\chapter{Algorytmy}
-
-\include{bitoniczne}
-
 \include{wiesniakow}
-
-\include{fibonacci}
 
 \include{sortowanietopologiczne}
 
@@ -152,12 +160,23 @@
 
 \include{dynamicznenadrzewach}
 
-\include{strassen}
+\include{problemynp}
+
+\include{siecibenesa}
+
+\include{pokrycie}
+
+\include{gramatyki}
+
+\include{vertex_cover}
+
+\include{dwanajblizszepunkty}
 
 %% Dodatki
 
 \begin{appendices}
 
+\pagestyle{empty}
 \input{porownanie.tex}
 
 \end{appendices}

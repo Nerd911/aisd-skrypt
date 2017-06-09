@@ -15,27 +15,75 @@ Nie zaczynamy zdania od wzoru.
 
 Nie zaczynamy rozdziału od programu (patrz rozdział wzorcowy).
 
-Podział:
+Podział (grupa 4 wspaniałych):
 
-- Fibonacci algorytm macierzowy (Rafał)
-- Kopiec binarny (Oleś)
-- Algorytm rosyjskich wieśniaków (Przemek)
-- Sortowanie topologiczne (Miriam)
-- Sortowanie (Ania)
-- Minimalne Drzewa Rozpinające (Kruskal, Prim) (Paweł)
-- Pokrycie zbioru (Michał)
-- Algorytm szeregownia (Ela :))
-- Algorytm Dijkstry (Mikołaj)
-- O złożoności obliczeniowej (Dominika)
-- Cut Property / Circle Property (Mateusz)
-- Algorytm Karatsuby (Przemek)
-- Master Theorem (Marcin)
-- Algorytm Boruvki (Paweł)
-- Algorytm dwóch najbliższych punktów (Tomasz)
+- Lazy Select (KPI)
+- Drzewa Splay (Tomek)
+- Drzewce (Przemek)
+- Drzewa dwumianowe leniwe (Marcin)
 
-Tematy wolne:
-- Programowanie dynamiczne na drzewach
-- O modelach obliczeń
-- Algorytm Strassena (nadobowiązkowy)
-- Sieć Banesa-Waksmana
+Zrobione:
+
+- Algorytm Strassena (KPI)
+- Sortowanie Bitoniczne (KPI)
+- Fibonacci algorytm macierzowy (Rafał Florczak)
+- Master Theorem (Marcin Bartkowiak + KPI)
+- element uniqness (KPI)
+- problem plecakowy (Marcin Bartkowiak + KPI)
+
+W toku:
+
+- counting sort (Dominika)
+- pokrycie wierzchołkowe (Krzysztof Starzyk)
+- Algorytm rosyjskich wieśniaków (Przemek Joniak)
+- Pokrycie zbioru (Michał Wierzbicki)
+- Algorytm Dijkstry (Mikołaj Słupiński)
+- Cut Property / Circle Property (Mateusz Ciesiółka)
+- Algorytm dwóch najbliższych punktów (Tomasz Nanowski)
+- Sieć Banesa-Waksmana (Marcin Bartkowiak)
+- Algorytm sprawdzający czy słowo należy do języka (Przemek Joniak)
+- problemy NP (Wojtek Balik)
+
+Do wzięcia:
+
+- Union-find
+- Drzewa przedziałowe
+- Hashowanie
+- Shift-And
+- Wyszukiwanie wzorca za pomocą automatu
+- MP / KMP
+- KR
+- Drzewa czerwono-czarne
+- B-drzewa
+- Słownik statyczny
+- Geometria obliczeniowa
+- Kopce Fibonacciego
+- Szybka transformata
+- Drzewa Bossa
+- bucket sort
+- model drzew decyzyjnych
+- dolna granica min-maks
+- dolne granice 
+- optymalna kolejność mnożenia macierzy
+- drzewa rozpinające drabiny
+- Cykl Hamiltona
+- 3SAT
+- 3-wymiarowe skojarzenie
+- algorytm stokrotek
 - Algorytm D&Z otoczki wypukłej
+- O modelach obliczeń
+- Programowanie dynamiczne na drzewach
+- LCS 
+- Algorytm Karatsuby
+- Algorytm Boruvki
+- O złożoności obliczeniowej 
+- Algorytm szeregownia
+- Minimalne Drzewa Rozpinające (Kruskal, Prim)
+- Sortowanie (Ania Karaś)
+- Sortowanie topologiczne
+- Kopiec binarny
+- Statystyki pozycyjne
+- Algorytm magicznych piątek
+- Drzewa AVL
+- izomorfizm drzew
+- sortowanie ciągów różnej długości
